@@ -7,9 +7,7 @@ import java.util.ArrayList;
  * @author fernando
  */
 public class Populacao {
-    
-    // Precisão
-    Integer precisao;
+
     // Valor mínimo
     Double minimo;
     // Valor máximo
@@ -27,8 +25,8 @@ public class Populacao {
     // Problema
     Problema problema;
 
-    public Populacao(Integer precisao, Double minimo, Double maximo, Integer nVar, Integer tamanho, Problema problema) {
-        this.precisao = precisao;
+    public Populacao(Double minimo, Double maximo, Integer nVar, Integer tamanho, Problema problema) {
+
         this.minimo = minimo;
         this.maximo = maximo;
         this.nVar = nVar;
@@ -36,14 +34,7 @@ public class Populacao {
         this.problema = problema;
         this.individuos = new ArrayList<>();
     }
-    
-    public Integer getPrecisao() {
-        return precisao;
-    }
 
-    public void setPrecisao(Integer precisao) {
-        this.precisao = precisao;
-    }
 
     public Double getMinimo() {
         return minimo;
@@ -92,7 +83,7 @@ public class Populacao {
         
         for(int i = 0; i < this.getTamanho(); i++) {
             
-            Individuo individuo = new Individuo(precisao, minimo, maximo, nVar);
+            Individuo individuo = new Individuo(minimo, maximo, nVar);
             individuo.criar();
             
             this.getIndividuos().add(individuo);
