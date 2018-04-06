@@ -20,6 +20,7 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+<<<<<<< Updated upstream
 
 
 # History files
@@ -55,3 +56,6 @@ vignettes/*.pdf
 # Temporary files created by R markdown
 *.utf8.md
 *.knit.md
+=======
+.Rproj.user
+>>>>>>> Stashed changes
