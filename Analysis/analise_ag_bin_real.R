@@ -13,6 +13,3 @@ show(sd(dados$F0))
 
 
 boxplot(FO~Teste, data = dados)
-
-modelo <- aov(FO~Teste, data = dados)
-summary(modelo)
