@@ -13,3 +13,14 @@ show(sd(dados$F0))
 
 
 boxplot(FO~Teste, data = dados)
+
+modelo <- aov(FO~Teste, data = dados)
+summary(modelo)
+
+bin1 <- dados$FO[dados$Teste == "BIN1"]
+bin2 <- dados$FO[dados$Teste == "BIN2"]
+
+
+t.test(bin1, bin2)
+
+
