@@ -1,0 +1,182 @@
+---
+title: "Analise AGReal"
+author: "Arthur Miranda Gomes"
+date: "3 de maio de 2018"
+output: slidy_presentation
+---
+
+
+
+
+
+``` {r, echo = FALSE}
+
+knitr::opts_chunk$set(echo = FALSE)
+
+rm(list = ls())
+
+
+dados <- read.csv2("../data.csv")
+
+dados$FO <- as.numeric(as.character.numeric_version(dados$FO))
+dados$FO_Pior <- as.numeric(as.character.numeric_version(dados$FO_Pior))
+
+dados$Tempo <- as.numeric(dados$Tempo)
+
+tempo1 <- dados$Tempo[dados$Teste == "REAL1"]
+tempo2 <- dados$Tempo[dados$Teste == "REAL2"]
+
+
+library(plyr)
+
+
+```
+
+
+# Sobre os Testes
+
+O teste 1 foi feito considerando uma população de 100 individuos, com uma taxa de crossover de 0.002 e uma taxa de mutação de 0.9.
+
+O teste 2 foi feito considerando uma população de 50 individuos, com uma taxa de crossover de 0.01 e uma taxa de mutação de 0.1.
+
+
+
+
+``` {r, echo = FALSE}
+real1 <- dados$FO[dados$Teste == "REAL1"]
+real2 <- dados$FO[dados$Teste == "REAL2"]
+real1_pior <- dados$FO_Pior[dados$Teste == "REAL1"]
+real2_pior <- dados$FO_Pior[dados$Teste == "REAL2"]
+
+```
+
+
+
+# Resultados
+
+## Resultado da função objetivo para os melhores individuos do teste 1
+``` {r}
+plot(real1)
+```
+
+# Resultados
+
+## Resultado da função objetivo para os melhores individuos do teste 2
+``` {r}
+plot(real2)
+```
+
+# Resultados
+
+## Resultado da função objetivo para os piores individuos do teste 1
+``` {r}
+plot(real1_pior)
+```
+
+# Resultados
+
+## Resultado da função objetivo para os piores individuos do teste 2
+``` {r}
+plot(real2_pior)
+```
+
+# Plot do valor em função do teste
+``` {r}
+boxplot(FO~Teste, data=dados)
+```
+
+
+
+
+# Dentre os melhores individuos na geração 300
+
+## Teste 1 - Melhores
+```{r}
+min(real1)
+```
+## Teste 1 - Piores
+```{r}
+max(real1)
+```
+
+
+## Teste 2 - Melhores
+```{r}
+min(real2)
+```
+## Teste 2 - Piores
+```{r}
+max(real2)
+```
+
+
+# Dentre os piores individuos da geração 300
+
+## Teste 1 - Piores
+```{r}
+max(real1_pior)
+```
+
+## Teste 2 - Piores
+```{r}
+max(real2_pior)
+```
+
+
+# Desvio padrão e media
+
+## Desvio para o Teste 1
+``` {r}
+sd(real1)
+```
+
+## Desvio para o Teste 2
+
+``` {r}
+sd(real2)
+
+``` 
+# Desvio padrão e media
+
+## Media para o Teste 1
+``` {r}
+mean(real1)
+```
+
+## Media para o Teste 2
+
+``` {r}
+mean(real2)
+
+``` 
+
+# Tempo medio de execução
+
+## Media de tempo para o teste 1
+
+``` {r}
+mean(tempo1)
+
+```
+
+## Media de tempo para o teste 2
+
+``` {r}
+mean(tempo2)
+
+```
+
+
+
+# Teste T 
+
+
+## Media1 != Media2
+
+``` {r}
+t.test(real1, real2)
+``` 
+
+
+
+
