@@ -94,9 +94,9 @@ public class ESReal implements Metodo {
             // Limpar descendentes
             descendentes.getIndividuos().clear();
             
-            System.out.println("G = " + g 
-                    + "\t"
-                    + populacao.getMelhorIndividuo().getFuncaoObjetivo());
+//            System.out.println("G = " + g
+//                    + "\t"
+//                    + populacao.getMelhorIndividuo().getFuncaoObjetivo());
                         
             
             

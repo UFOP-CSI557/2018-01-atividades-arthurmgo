@@ -185,8 +185,8 @@ public class DEReal implements Metodo {
                 melhorSolucao = (IndividuoDouble) melhorDaPopulacao.clone();
             }
 
-            System.out.println("G = " + g + "\t"
-                    + melhorSolucao.getFuncaoObjetivo());
+//            System.out.println("G = " + g + "\t"
+//                    + melhorSolucao.getFuncaoObjetivo());
 
         }
 

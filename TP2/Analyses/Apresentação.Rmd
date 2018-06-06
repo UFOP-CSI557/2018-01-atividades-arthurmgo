@@ -1,0 +1,205 @@
+---
+title: "Analise ESReal e DEReal"
+author: "Arthur Miranda Gomes"
+date: "3 de maio de 2018"
+output: slidy_presentation
+---
+
+
+
+
+
+``` {r, echo = FALSE}
+
+knitr::opts_chunk$set(echo = FALSE)
+
+rm(list = ls())
+
+
+dados <- read.csv2("../data.csv")
+
+dados$FO <- as.numeric(as.character.numeric_version(dados$FO))
+
+dados$Tempo <- as.numeric(dados$Tempo)
+
+tempo1 <- dados$Tempo[dados$Teste == "AGREAL"]
+tempo2 <- dados$Tempo[dados$Teste == "ESREAL"]
+tempo3 <- dados$Tempo[dados$Teste == "DEREAL"]
+
+
+library(plyr)
+
+
+```
+
+
+# Sobre os Testes
+
+Todos os testes foram realizados utilizando a representação real, inicialização da população aleatória, 100 variaveis, criterio de parada: 300 gerações.
+
+A taxa de mutação foi de 0.07
+
+A taxa de crossover foi de 0.002 para o AGReal.
+O Cr para o DEReal foi de 0.9.
+
+
+``` {r, echo = FALSE}
+real1 <- dados$FO[dados$Teste == "AGREAL"]
+real2 <- dados$FO[dados$Teste == "ESREAL"]
+real3 <- dados$FO[dados$Teste == "DEREAL"]
+
+```
+
+
+
+# Resultados
+
+## Resultado da função objetivo para os melhores individuos do AGreal
+``` {r}
+plot(real1)
+```
+
+# Resultados
+
+## Resultado da função objetivo para os melhores individuos do ESReal
+``` {r}
+plot(real2)
+```
+
+# Resultados
+
+## Resultado da função objetivo para os melhores individuos do DEReal
+``` {r}
+plot(real3)
+```
+
+
+# Plot do valor em função do teste
+``` {r}
+boxplot(FO~Teste, data=dados)
+```
+
+
+# Dentre os melhores individuos na geração 300
+
+## AGReal - Melhores
+```{r}
+min(real1)
+```
+## AGReal - Piores
+```{r}
+max(real1)
+```
+
+## ESReal - Melhores
+```{r}
+min(real2)
+```
+## ESReal - Piores
+```{r}
+max(real2)
+```
+
+## DEReal - Melhores
+```{r}
+min(real3)
+```
+## DEReal - Piores
+```{r}
+max(real3)
+```
+
+
+
+# Desvio padrão e media
+
+## Desvio para o AGReal
+``` {r}
+sd(real1)
+```
+
+## Desvio para o ESReal
+
+``` {r}
+sd(real2)
+
+```
+
+## Desvio para o DEReal
+
+``` {r}
+sd(real3)
+
+```
+
+
+
+# Desvio padrão e media
+
+## Media para o AGReal
+``` {r}
+mean(real1)
+```
+
+## Media para o ESReal
+
+``` {r}
+mean(real2)
+
+```
+
+## Media para o ESReal
+
+``` {r}
+mean(real3)
+
+```
+
+# Tempo medio de execução
+
+## Media de tempo para o AGReal
+
+``` {r}
+mean(tempo1)
+
+```
+
+## Media de tempo para o ESReal
+
+``` {r}
+mean(tempo2)
+
+```
+
+## Media de tempo para o DEReal
+
+``` {r}
+mean(tempo3)
+
+```
+
+
+
+# Teste T
+
+
+## Media AGReal != ESReal
+
+``` {r}
+t.test(real1, real2)
+```
+
+## Media ESReal != DEReal
+
+``` {r}
+t.test(real2, real3)
+```
+
+## Media AGReal != DEReal
+
+``` {r}
+t.test(real1, real3)
+```
+
+
+
