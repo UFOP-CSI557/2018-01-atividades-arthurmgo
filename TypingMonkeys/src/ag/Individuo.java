@@ -40,12 +40,9 @@ public class Individuo {
 
     // Crossover
     Individuo crossover(Individuo partner) {
-        // A new child
         Individuo child = new Individuo(genes.length);
 
-        int midpoint = r.nextInt(genes.length); // Pick a midpoint
-
-        // Half from one, half from the other
+        int midpoint = r.nextInt(genes.length);
         for (int i = 0; i < genes.length; i++) {
             if (i > midpoint) child.genes[i] = genes[i];
             else              child.genes[i] = partner.genes[i];
